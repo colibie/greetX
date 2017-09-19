@@ -10,7 +10,6 @@
             }
             header{
                 height: 80px;
-                background: #fff;
             }
             header h1{
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -27,12 +26,18 @@
                 height: 500px;
                 text-align: center;
                 background: url('p.jpg');
+                background-attachment: fixed;
             }
-            main p{
+            #greet{
                 font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
                 color: #fff;
                 margin: auto;
                 padding-top:150px;
+            }
+            #date{
+                font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+                color: #fff;
+                margin: auto;
             }
             main span{
                 color: gold;
@@ -75,9 +80,51 @@
                 border-top:1px solid #0f222f;
                 text-align: center;
             }
+            @keyframes fadeIn {
+                to {
+                     opacity: 1;
+                    }
+            }
+
+            .fade-in {
+                opacity: 0;
+                animation: fadeIn 1s ease-in 1 forwards;
+            }
+
+            .is-paused {
+                 animation-play-state: paused;
+            }
+            @keyframes fadeIn2 {
+                to {
+                     opacity: 1;
+                    }
+            }
+
+            .fade-in2 {
+                opacity: 0;
+                animation: fadeIn 6s ease-in 1 forwards;
+            }
+
+            .is-paused2 {
+                 animation-play-state: paused;
+            }
+            @keyframes fadeIn3 {
+                to {
+                     opacity: 1;
+                    }
+            }
+
+            .fade-in3 {
+                opacity: 0;
+                animation: fadeIn 8s ease-in 1 forwards;
+            }
+
+            .is-paused3 {
+                 animation-play-state: paused;
+            }
         </style>
     </head>
-    <body>
+    <body onload="animate()">
 
         <header>
 
@@ -87,20 +134,53 @@
 
         <main>
             
-            <p id="greet">HELLO <span>;)</span></p>
+            <p id="greet" class='js-fade fade-in is-paused'>HELLO <span>;)</span></p>
+            <p id="date"></p>
 
-            <input type="text" name="userName" id="userName" placeholder="Please Tell Us Your Name">
+            <input type="text" name="userName" id="userName" placeholder="Please Tell Us Your Name" class='js2-fade fade-in2 is-paused2'>
             <br><br><br>
-            <input type="submit" id="btn" value="&raquo;PROCEED&laquo;" onclick="greetx()">
+            <input type="submit" id="btn" value="&raquo;PROCEED&laquo;" onclick="greetx()" class='js3-fade fade-in3 is-paused3'>
 
             <script type="text/javascript">
 
+                function animate(){
+                    var el = document.querySelector('.js-fade');
+                    if (el.classList.contains('is-paused')){
+                             el.classList.remove('is-paused');
+                        }
+                        var al = document.querySelector('.js2-fade');
+                    if (al.classList.contains('is-paused2')){
+                             al.classList.remove('is-paused2');
+                        }
+                        var bl = document.querySelector('.js3-fade');
+                    if (bl.classList.contains('is-paused3')){
+                             bl.classList.remove('is-paused3');
+                        }
+                }
+
                 function greetx(){
+                    var hide = document.getElementById("userName");
+                    hide.style.display = 'none';
+                    var hide1 = document.getElementById("btn");
+                    hide1.style.display = 'none';
                     var greetx;
                     var userName = document.getElementById('userName').value;
+                    var d = new Date();
+                    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                    var today = days[d.getDay()];
+                    var m = new Date();
+                    var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                    var thisMonth = month[m.getMonth()];
+                    var t = new Date();
+                    var date = t.getDate();
+                    var y = new Date();
+                    var year = y.getFullYear();
+                    var oge = new Date();
                     if (userName!=null){
                         greetx = "HELLO " + userName + "! how are you today";
+                        tellDate = "Today's date is " + today + ", " + thisMonth + " " + date + " " + year + ".";
                         document.getElementById("greet").innerHTML = greetx;
+                        document.getElementById("date").innerHTML = tellDate;
                     }
 
                 }
