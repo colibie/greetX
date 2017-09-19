@@ -50,7 +50,7 @@
 	            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             }
             #userName:focus{
-                border:1px solid #0f222f;
+                border:1px solid gol;
             }
             #btn{
                 width:127px;
@@ -64,6 +64,8 @@
             #btn:hover{
                 background: #fff;
                 color: #0f222f;
+                -webkit-transition: width 1s;
+				transition: 1s;
             }
             footer{
                 font-family:'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
@@ -85,11 +87,28 @@
 
         <main>
             
-            <p>HELLO <span>;)</span></p>
+            <p id="greet">HELLO <span>;)</span></p>
 
             <input type="text" name="userName" id="userName" placeholder="Please Tell Us Your Name">
             <br><br><br>
-            <input type="submit" id="btn" value="&raquo;PROCEED&laquo;">
+            <input type="submit" id="btn" value="&raquo;PROCEED&laquo;" onclick="greetx()">
+
+            <script type="text/javascript">
+
+                function greetx(){
+                    var greetx;
+                    var userName = document.getElementById('userName').value;
+                    if (userName!=null){
+                        greetx = "HELLO " + userName + "! how are you today";
+                        document.getElementById("greet").innerHTML = greetx;
+                    }
+
+                }
+
+
+
+            </script>
+
 
         </main>
 
