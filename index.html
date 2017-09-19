@@ -39,6 +39,10 @@
                 color: #fff;
                 margin: auto;
             }
+            pre{
+                color:aqua;
+                font-style: italic;
+            }
             main span{
                 color: gold;
             }
@@ -122,13 +126,16 @@
             .is-paused3 {
                  animation-play-state: paused;
             }
+            a{
+                text-decoration: none;
+            }
         </style>
     </head>
     <body onload="animate()">
 
         <header>
 
-            <h1>GREET<span>X</span></h1>
+            <a href="index.html"><h1>GREET<span>X</span></h1></a>
 
         </header>
 
@@ -136,8 +143,9 @@
             
             <p id="greet" class='js-fade fade-in is-paused'>HELLO <span>;)</span></p>
             <p id="date"></p>
+            <pre id="quote"></pre>
 
-            <input type="text" name="userName" id="userName" placeholder="Please Tell Us Your Name" class='js2-fade fade-in2 is-paused2'>
+            <input type="text" name="userName" id="userName" placeholder="Please Tell Us Your Name" class='js2-fade fade-in2 is-paused2' required>
             <br><br><br>
             <input type="submit" id="btn" value="&raquo;PROCEED&laquo;" onclick="greetx()" class='js3-fade fade-in3 is-paused3'>
 
@@ -175,12 +183,38 @@
                     var date = t.getDate();
                     var y = new Date();
                     var year = y.getFullYear();
-                    var oge = new Date();
-                    if (userName!=null){
-                        greetx = "HELLO " + userName + "! how are you today";
-                        tellDate = "Today's date is " + today + ", " + thisMonth + " " + date + " " + year + ".";
+                    var o = new Date();
+                    var oge = o.getHours();
+                    var min = new Date();
+                    var minute = min.getMinutes();
+                    var properGreeting;
+                    var quotes = ["A butterfly that fancies itself a bird, will be blown away by the wind",
+                                  "If you speak a proverb to a child and explain the same to him, the money\n that was used to marry the child's mother has been wasted",
+                                  "Because all lizards crawl on their bellies, one can't say which one is purging",
+                                  "He whose house is on fire, does not go about hunting rats",
+                                  "A bird that flies off the earth and lands on an anthill is still on the ground",
+                                  "He that beats the drum for the mad man to dance is no better than the mad man himself",
+                                  "No matter how beautiful and well crafted a coffin may look, it will not make anyone wish for death",
+                                  "When the root of a tree begins to decay, it spreads death to the branches",
+                                  "If your only tool is a hammer, you will see every problem as a nail",
+                                  "It is often said that anyone who swallows a mango whole has great faith in is anus"]
+                    if (userName!= ""){
+                        if (oge < 12 ){properGreeting = "Good Morning";}if (oge >= 12 || oge < 18 ){properGreeting = "Good Afternoon";}if (oge >= 18){properGreeting = "Good Evening";};
+                        greetx = properGreeting + " " + userName + "! how are you?";
+                        tellDate = "Today's date is " + today + ", " + thisMonth + " " + date + " " + year + ". The time is " + oge + ":" + minute ;
                         document.getElementById("greet").innerHTML = greetx;
                         document.getElementById("date").innerHTML = tellDate;
+                        var q = Math.floor(Math.random() * 11);
+                        var display = quotes[q];
+                        document.getElementById("quote").innerHTML = "''"+ display + "''";
+                    }else{
+                        document.getElementById("greet").innerHTML = "Please input your name, we're sure it's awesome";
+                        var count = 2;
+                        setInterval(function(){
+                        count--;
+                        if (count == 0){
+                        window.location = 'index.html'; }
+                        },1000);
                     }
 
                 }
