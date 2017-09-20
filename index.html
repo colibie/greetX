@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title></title>
+        <title>Greetings</title>
         <meta charset="UTF-8">
         <style>
             body{
@@ -25,7 +25,7 @@
             main{
                 height: 500px;
                 text-align: center;
-                background: url('p.jpg');
+                background: url('https://imgur.com/0z7Tmek.jpg');
                 background-attachment: fixed;
             }
             #greet{
@@ -59,7 +59,7 @@
 	            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
             }
             #userName:focus{
-                border:1px solid gol;
+                border:1px solid gold;
             }
             #btn{
                 width:127px;
@@ -135,7 +135,7 @@
 
         <header>
 
-            <a href="index.html"><h1>GREET<span>X</span></h1></a>
+            <a href="index.html"><h1>GREET<span>X</span></h1></a> 
 
         </header>
 
@@ -152,43 +152,44 @@
             <script type="text/javascript">
 
                 function animate(){
-                    var el = document.querySelector('.js-fade');
+                    let el = document.querySelector('.js-fade');
                     if (el.classList.contains('is-paused')){
                              el.classList.remove('is-paused');
                         }
-                        var al = document.querySelector('.js2-fade');
+                        let al = document.querySelector('.js2-fade');
                     if (al.classList.contains('is-paused2')){
                              al.classList.remove('is-paused2');
                         }
-                        var bl = document.querySelector('.js3-fade');
+                        let bl = document.querySelector('.js3-fade');
                     if (bl.classList.contains('is-paused3')){
                              bl.classList.remove('is-paused3');
                         }
                 }
 
                 function greetx(){
-                    var hide = document.getElementById("userName");
+                    let hide = document.getElementById("userName");
                     hide.style.display = 'none';
-                    var hide1 = document.getElementById("btn");
+                    let hide1 = document.getElementById("btn");
                     hide1.style.display = 'none';
-                    var greetx;
-                    var userName = document.getElementById('userName').value;
-                    var d = new Date();
-                    var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-                    var today = days[d.getDay()];
-                    var m = new Date();
-                    var month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
-                    var thisMonth = month[m.getMonth()];
-                    var t = new Date();
-                    var date = t.getDate();
-                    var y = new Date();
-                    var year = y.getFullYear();
-                    var o = new Date();
-                    var oge = o.getHours();
-                    var min = new Date();
-                    var minute = min.getMinutes();
-                    var properGreeting;
-                    var quotes = ["A butterfly that fancies itself a bird, will be blown away by the wind",
+                    let greetx;
+                    let userName = document.getElementById('userName').value;
+                    let d = new Date();
+                    let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+                    let today = days[d.getDay()];
+                    let m = new Date();
+                    let month = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+                    let thisMonth = month[m.getMonth()];
+                    let t = new Date();
+                    let date = t.getDate();
+                    let y = new Date();
+                    let year = y.getFullYear();
+                    let o = new Date();
+                    let oge = o.getHours();
+                    let min = new Date();
+                    let minute = min.getMinutes();
+                    let properGreeting;
+                    let tellDate;
+                    let quotes = ["A butterfly that fancies itself a bird, will be blown away by the wind",
                                   "If you speak a proverb to a child and explain the same to him, the money\n that was used to marry the child's mother has been wasted",
                                   "Because all lizards crawl on their bellies, one can't say which one is purging",
                                   "He whose house is on fire, does not go about hunting rats",
@@ -199,17 +200,17 @@
                                   "If your only tool is a hammer, you will see every problem as a nail",
                                   "It is often said that anyone who swallows a mango whole has great faith in his anus"]
                     if (userName!= ""){
-                        if (oge < 12 ){properGreeting = "Good Morning";}if (oge >= 12 || oge < 18 ){properGreeting = "Good Afternoon";}if (oge >= 18){properGreeting = "Good Evening";};
+                        if (oge < 12 ){properGreeting = "Good Morning";}if (oge >= 12 || oge < 16 ){properGreeting = "Good Afternoon";}if (oge >= 16){properGreeting = "Good Evening";};
                         greetx = properGreeting + " " + userName + "! How are you?";
                         tellDate = "Today's date is " + today + ", " + thisMonth + " " + date + " " + year + ". The time is " + oge + ":" + minute ;
                         document.getElementById("greet").innerHTML = greetx;
                         document.getElementById("date").innerHTML = tellDate;
-                        var q = Math.floor(Math.random() * 11);
-                        var display = quotes[q];
-                        document.getElementById("quote").innerHTML = "''"+ display + "''";
+                        let q = Math.floor(Math.random() * 9);
+                        let display = quotes[q];
+                        document.getElementById("quote").innerHTML = '"'+ display + '"';
                     }else{
-                        document.getElementById("greet").innerHTML = "Please input your name, we're sure it's awesome";
-                        var count = 2;
+                        document.getElementById("greet").innerHTML = "Please input your name, I'm sure it's awesome!";
+                        let count = 2;
                         setInterval(function(){
                         count--;
                         if (count == 0){
